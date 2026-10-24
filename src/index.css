@@ -1,0 +1,690 @@
+/* Plain CSS — Minimal Black-and-White Hero Section */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* Main Hero Container: Full viewport height, white background, flex column with justify-content: space-between */
+.hero-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Fixed Navbar at top (z-index 50, pointer-events none on nav itself, auto on children) */
+.hero-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  width: 100%;
+}
+
+.navbar-left {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-right {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.insta-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f4f4f6;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 9999px;
+  padding: 4px;
+  transition: background-color 0.18s ease,
+    transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.insta-nav-pill:hover {
+  background-color: #eaeaee;
+  transform: translateY(-1px);
+}
+
+.insta-circle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.insta-nav-label {
+  display: none;
+  font-size: 11px;
+  font-weight: 500;
+  color: #000000;
+  padding-right: 12px;
+  white-space: nowrap;
+}
+
+/* 1. Logo: custom SVG icon + brand text "NeuralKinetics" (hidden on mobile, shown on desktop 768px+) */
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #000000;
+  padding: 4px 6px 4px 2px;
+  border-radius: 9999px;
+}
+
+.brand-logo-svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.brand-text {
+  display: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* 2. Menu button: black pill with white circle containing a Plus icon (size 12, strokeWidth 3) + "Menu" text (11px, white) */
+.menu-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 4px 14px 4px 4px;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.18s ease;
+}
+
+.menu-pill-btn:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-1px);
+}
+
+.menu-circle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menu-btn-label {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* 3. Tags pill: light gray (#F4F4F6) rounded-full container with two text labels "Advanced Bionics" and "Cognitive AI" (hidden on mobile, shown on desktop) */
+.nav-tags-pill {
+  display: none;
+  align-items: center;
+  height: 40px;
+  background-color: #f4f4f6;
+  border-radius: 9999px;
+  padding: 0 8px;
+  gap: 4px;
+}
+
+.nav-tag-item {
+  font-size: 11px;
+  font-weight: 400;
+  color: #000000;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition: background-color 0.18s ease;
+}
+
+.nav-tag-item:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Right side: light gray pill with a black circle button (containing 4-dot grid SVG icon) + label "Adaptive Systems" (hidden on mobile) */
+.adaptive-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f4f4f6;
+  border-radius: 9999px;
+  padding: 4px;
+  transition: background-color 0.18s ease,
+    transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.adaptive-pill:hover {
+  background-color: #eaeaee;
+  transform: translateY(-1px);
+}
+
+.adaptive-circle-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #000000;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adaptive-label {
+  display: none;
+  font-size: 11px;
+  font-weight: 500;
+  color: #000000;
+  padding-right: 12px;
+  white-space: nowrap;
+}
+
+/* Background Video: Absolutely positioned full-screen video behind everything (z-index 0) */
+.hero-video-stage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* On mobile: video wrapper is 80% width and 80% height (centered) */
+.hero-video-wrapper {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Top spacer so justify-content: space-between pins footer cleanly at bottom */
+.hero-top-spacer {
+  height: 60px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Footer content pinned to bottom (z-index 30) with a white gradient fade-up background */
+.hero-footer {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  margin-top: auto;
+  background: linear-gradient(
+    to top,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
+  );
+  padding: 48px 16px 24px 16px;
+}
+
+.hero-footer-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-left-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* 1. Subtitle line: small black dot (8px circle) + "Best digital banking card 2026" (13px, 55% opacity black) */
+.hero-subtitle-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-subtitle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000000;
+  flex-shrink: 0;
+}
+
+.hero-subtitle-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.2;
+}
+
+/* 2. Heading: "One Card, Zero / Limits. Worldwide." on two lines. Font-weight 300, clamp(2rem, 8vw, 4.5rem) on mobile, letter-spacing -0.03em, line-height 1 */
+.hero-heading {
+  font-weight: 300;
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #000000;
+  margin: 0;
+}
+
+/* 3. Two buttons: "See Features" (black pill, white text, 13px) and "How It Works" (transparent with dark border rgba(0,0,0,0.35), 13px) */
+.hero-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.btn-primary-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 13px 24px;
+  min-height: 40px;
+  border-radius: 9999px;
+  border: 1px solid #000000;
+  white-space: nowrap;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.18s ease;
+}
+
+.btn-primary-pill:hover {
+  background-color: #1f1f1f;
+  transform: translateY(-1px);
+}
+
+.btn-secondary-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 13px 24px;
+  min-height: 40px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.btn-secondary-pill:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.65);
+  transform: translateY(-1px);
+}
+
+/* Right block: Three tag pills "Neuromorphic", "AGI", "Cybernetics" (white bg, light border rgba(0,0,0,0.12), 11px, rounded-full) */
+.footer-right-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+  color: #000000;
+  padding: 8px 14px;
+  min-height: 28px;
+  white-space: nowrap;
+  transition: border-color 0.18s ease, background-color 0.18s ease,
+    transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-tag-pill:hover {
+  border-color: rgba(0, 0, 0, 0.35);
+  background-color: #fafafa;
+  transform: translateY(-1px);
+}
+
+/* Desktop (768px+) Responsive Rules */
+@media (min-width: 768px) {
+  .hero-navbar {
+    padding: 24px 32px;
+  }
+
+  .navbar-left {
+    gap: 12px;
+  }
+
+  .brand-text {
+    display: inline-block;
+  }
+
+  .menu-circle-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nav-tags-pill {
+    display: inline-flex;
+  }
+
+  .insta-nav-pill {
+    padding: 4px 14px 4px 4px;
+  }
+
+  .insta-circle-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .insta-nav-label {
+    display: inline-block;
+    padding-right: 0;
+  }
+
+  .adaptive-pill {
+    padding: 4px 16px 4px 4px;
+  }
+
+  .adaptive-circle-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .adaptive-label {
+    display: inline-block;
+    padding-right: 0;
+  }
+
+  .hero-video-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-footer {
+    padding: 64px 32px 32px 32px;
+  }
+
+  .hero-footer-inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .hero-heading {
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  }
+}
+
+/* Interactive Modal / Sheet Styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-sheet {
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-kicker-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #000000;
+}
+
+.modal-kicker-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.modal-close-btn {
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  min-height: 28px;
+  transition: background-color 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: #f4f4f6;
+}
+
+.modal-heading {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-description {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.modal-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background-color: #f4f4f6;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.footer-insta-pill {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.modal-menu-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.modal-menu-item:hover {
+  background-color: #e8e8ec;
+}
+
+.modal-feature-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-feature-card {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+}
+
+.modal-feature-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.modal-feature-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.modal-feature-metric {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.modal-feature-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.modal-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.modal-metric-box {
+  padding: 14px;
+  border-radius: 14px;
+  background-color: #f4f4f6;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-metric-value {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.modal-metric-label {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.6);
+}

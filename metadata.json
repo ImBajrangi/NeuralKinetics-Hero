@@ -1,0 +1,6 @@
+{
+  "name": "NeuralKinetics — Worldwide Digital Banking Card",
+  "description": "Minimalist full-screen hero landing page for NeuralKinetics featuring adaptive bionics and worldwide zero-limit digital banking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
